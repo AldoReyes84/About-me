@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ site.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+    <!-- Add any other CSS or meta tags you need -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+      <h1> 
+      <a href= "https://aldoreyes84.github.io/AldoReyes.github.io"/>
+        AldoReyes.github.io
+      </a>
+      </h1>
+        {% if site.logo %}
+        <img src="{{ site.logo }}" alt="logo" class="site-logo">
+      {% endif %}
+        
+        <p class="view">
+          <a href=<a href="https://github.com/AldoReyes84/Data_Analisys_For_AdventureWorksDW2022">
+          View the Project on GitHub
+          <small>AldoReyes84/AldoReyes.github.io</small>
+         </a> 
+        </p>
+
+         <h3 id="Aldo Reyes Portfolio">
+        <a href="https://aldoreyes84.github.io/AldoReyes.github.io"/>
+          Aldo Reyes Portfolio
+          </a>
+        </h3>
+        
+        <h2>{{ site.title }}
+        </h2>
+   
+         <footer>
+        <p>This project is maintained by 
+        <a href="https://github.com/AldoReyes84">
+          AldoReyes84
+        </a>
+        </p>
+          <p>
+            <small>Hosted on GitHub Pages — Theme by
+           <a href="https://github.com/orderedlist">
+          orderedlist
+            </a>
+          </small>
+        </p>
+      </footer>
+      </header>
+        <section>
+      {{ content }}
+    </section>  
+    </div>    
+  </body>
+</html>
