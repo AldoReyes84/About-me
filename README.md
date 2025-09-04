@@ -1,6 +1,17 @@
 Go back to [Aldo Reyes Portfolio](https://aldoreyes84.github.io/AldoReyes.github.io/)
 
 # About Me
+
+## How I Work
+
+My approach to business intelligence is rooted in the belief that any data can be transformed into valuable insights, as long as it meets basic quality standards, as long as we have access to the right elements, the data structure remains consistent, regardless of the source, platform, or tool, while there are many methods to aggregate and present data, these can be researched, learned, and applied effectively.
+
+My main focus is transforming data into actionable insights that answer key business questions.
+
+When visualizing data, I aim to create clear, easy-to-read dashboards using best design practices such as contrast, alignment, spacing, consistency, and emphasis on the most relevant information.
+
+I truly enjoy working in teams, sharing knowledge, and learning from others.
+
 ## General Info
 My name is Aldo Reyes. I'm 41 years old and currently living in Mexico City.
 
@@ -23,18 +34,6 @@ I consider myself a calm and thoughtful person who stands firmly by my values an
 I’m also highly adaptable and capable of aligning with corporate goals to contribute meaningfully to any team.
 
 I deeply value friendships, colleagues, and family. While I enjoy meaningful connections, I prefer quiet environments—staying at home or meeting in peaceful places rather than attending loud parties.
-
-## How I Work
-
-My approach to business intelligence is rooted in the belief that any data can be transformed into valuable insights, as long as it meets basic quality standards.
-
-If we have access to the right facts and dimensions, the data structure remains consistent—regardless of the source, platform, or tool.
-While there are many methods to aggregate and present data, these can be researched, learned, and applied effectively.
-
-My main focus is transforming data into actionable insights that answer key business questions.
-When visualizing data, I aim to create clear, easy-to-read dashboards using best design practices such as contrast, alignment, spacing, consistency, and emphasis on the most relevant information.
-
-I truly enjoy working in teams, sharing knowledge, and learning from others.
 
 ## What I Love
 I love learning. I'm constantly exploring tutorials—whether it's mastering a guitar song, picking up a new instrument, cooking a new dish, or improving my technical skills.
