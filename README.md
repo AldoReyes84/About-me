@@ -1,5 +1,3 @@
-Go back to [Aldo Reyes Portfolio](https://aldoreyes84.github.io/AldoReyes.github.io/)
-
 # About Me
 
 ## How I Work
