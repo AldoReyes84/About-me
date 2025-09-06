@@ -405,9 +405,17 @@ th {
     color: #444
 }
 
-/*img {
+/* img {
     max-width: 100%
-}/*
+} /*
+
+img {
+    width: 200px;
+    height: 205px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
 
 .site-logo {
     width: 200px;
