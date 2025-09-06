@@ -424,10 +424,9 @@ kbd {
 }
 
 header {
-    width: 270px;
-    float: left;
+    width: 300px;
     position: fixed;
-    -webkit-font-smoothing: subpixel-antialiased
+   /* -webkit-font-smoothing: subpixel-antialiased */
 }
 
 ul.downloads {
