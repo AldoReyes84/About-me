@@ -405,9 +405,19 @@ th {
     color: #444
 }
 
-img {
+/*img {
     max-width: 100%
+}/*
+
+.site-logo {
+    width: 200px;
+    height: 205px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    /* margin: 0 auto 1em auto; */
 }
+
 
 kbd {
     background-color: #fafbfc;
