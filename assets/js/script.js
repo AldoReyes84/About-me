@@ -175,9 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // IntersectionObserve for Aside nav list
+  // IntersectionObserve for Aside article nav list
   document.addEventListener("DOMContentLoaded", () => {
-  const headings = document.querySelectorAll(".article-content h2");
+  const headings = document.querySelectorAll("#markdown-container h2[id]");
   const navLinks = document.querySelectorAll(".article-nav-list a");
 
   const observer = new IntersectionObserver(entries => {
