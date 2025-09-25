@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const id = entry.target.getAttribute("id");
         const link = document.querySelector(`.article-nav-list a[href="#${id}"]`);
 
-        console.log("👀 Observed:", id, "¿Visible?", entry.isIntersecting);
+        //console.log("👀 Observed:", id, "¿Visible?", entry.isIntersecting);
 
         if (entry.isIntersecting) {
           navLinks.forEach(l => l.classList.remove("active"));
