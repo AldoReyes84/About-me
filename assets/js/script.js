@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("✅ DOM completamente cargado");
+ // console.log("✅ DOM completamente cargado");
 
   // 🔍 Base elements validation
   const headerPanelContainer = document.getElementById("header-panels-container");
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
           navLinks.forEach(l => l.classList.remove("active"));
           if (link) {
             link.classList.add("active");
-            console.log(`✅ Activado: ${id}`);
+           // console.log(`✅ Activado: ${id}`);
           }
         }
       });
