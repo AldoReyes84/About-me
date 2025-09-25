@@ -517,6 +517,11 @@ aside {
   height: fit-content;
 }
 
+.article-nav-list{
+  margin-right: 0.5em;
+}
+
+
 .article-nav-list li {
   margin: 0.5em;
 }
