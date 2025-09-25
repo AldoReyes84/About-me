@@ -523,7 +523,6 @@ aside {
 
 .article-nav-list a {
   color: gray;
-  background-color: #eef6ff;
   margin-bottom: 0.5em;
 }
 
@@ -531,7 +530,6 @@ aside {
   font-weight: bold;
   color: #0078d4;
   border-left: 3px solid #0078d4;
-  background-color: #eef6ff;
 }
 
 footer {
