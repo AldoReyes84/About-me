@@ -1,95 +1,95 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  const headerPanelContainer = document.getElementById("header-panels-container");
-  const headerPanelContent = document.getElementById("header-panel-content");
-  const templates = document.querySelector('.panel-templates');
+    const headerPanelContainer = document.getElementById("header-panels-container");
+    const headerPanelContent = document.getElementById("header-panel-content");
+    const templates = document.querySelector('.panel-templates');
 
-  let activeButton = null;
+    let activeButton = null;
 
-  // 🧾 Validate required elements
-  if (!headerPanelContainer || !headerPanelContent || !templates) {
-    console.error("❌ Required elements not found.");
-    return;
-  }
+    // 🧾 Validate required elements
+    if (!headerPanelContainer || !headerPanelContent || !templates) {
+      console.error("❌ Required elements not found.");
+      return;
+    }
   
- // Handle nav button clicks
-    document.querySelectorAll('.header-toggle').forEach(button => {
-    button.addEventListener('click', function (event) {
-    event.stopPropagation();
-      
-      const rawTarget = button.getAttribute('data-target');
-       if (!rawTarget) {
-        console.warn("⚠️ Este botón no tiene data-target:", button);
-        return;
-         
-      }
-      const templateId = rawTarget.replace("panel-", "");
-      const template = templates.querySelector(`#${templateId}`);
-      const isActive = button.classList.contains("active");
-      const isSameButton = activeButton === button;
+       // Handle nav button clicks
+      document.querySelectorAll('.header-toggle').forEach(button => {
+      button.addEventListener('click', function (event) {
+      event.stopPropagation();
+        
+        const rawTarget = button.getAttribute('data-target');
+        if (!rawTarget) {
+          console.warn("⚠️ Este botón no tiene data-target:", button);
+          return;
+          
+        }
+        const templateId = rawTarget.replace("panel-", "");
+        const template = templates.querySelector(`#${templateId}`);
+        const isActive = button.classList.contains("active");
+        const isSameButton = activeButton === button;
 
-      // 🔄 Collapse panel if same button is clicked again
-      if (isActive && isSameButton) {
+        // 🔄 Collapse panel if same button is clicked again
+        if (isActive && isSameButton) {
+          headerPanelContainer.hidden = true;
+          headerPanelContent.innerHTML = '';
+          button.classList.remove("active");
+          button.setAttribute("aria-expanded", "false");
+          activeButton = null;
+          return;
+        }
+
+        // 🧠 Inject template content into header panel
+        if (template) {
+          headerPanelContent.innerHTML = '';
+          headerPanelContent.appendChild(template.content.cloneNode(true));
+          headerPanelContainer.hidden = false;
+
+          // Reset all buttons
+            document.querySelectorAll('.header-toggle').forEach(btn => {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-expanded", "false");
+          });
+
+          // Activate current button
+          button.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
+          activeButton = button;
+        } else {
+          headerPanelContent.innerHTML = "<p>Content not available for this section.</p>";
+          headerPanelContainer.hidden = false;
+        }
+      });
+    });
+
+    // ❌ Close header panel when clicking outside
+      document.addEventListener('click', (event) => {
+      const isClickInsidePanel = headerPanelContainer.contains(event.target);
+      const isClickOnNavButton = [...document.querySelectorAll('.header-toggle')].some(btn => btn.contains(event.target));
+
+      if (!isClickInsidePanel && !isClickOnNavButton) {
         headerPanelContainer.hidden = true;
         headerPanelContent.innerHTML = '';
-        button.classList.remove("active");
-        button.setAttribute("aria-expanded", "false");
-        activeButton = null;
-        return;
-      }
-
-      // 🧠 Inject template content into header panel
-      if (template) {
-        headerPanelContent.innerHTML = '';
-        headerPanelContent.appendChild(template.content.cloneNode(true));
-        headerPanelContainer.hidden = false;
-
-        // Reset all buttons
-          document.querySelectorAll('.header-toggle').forEach(btn => {
+        document.querySelectorAll('.header-toggle').forEach(btn => {
           btn.classList.remove("active");
           btn.setAttribute("aria-expanded", "false");
         });
-
-        // Activate current button
-        button.classList.add("active");
-        button.setAttribute("aria-expanded", "true");
-        activeButton = button;
-      } else {
-        headerPanelContent.innerHTML = "<p>Content not available for this section.</p>";
-        headerPanelContainer.hidden = false;
+        activeButton = null;
       }
     });
-  });
 
-  // ❌ Close header panel when clicking outside
-    document.addEventListener('click', (event) => {
-    const isClickInsidePanel = headerPanelContainer.contains(event.target);
-    const isClickOnNavButton = [...document.querySelectorAll('.header-toggle')].some(btn => btn.contains(event.target));
+      // Rowdown arrow navigation when clic
+      document.querySelectorAll('.toggle-arrow').forEach(arrow => {
+      arrow.addEventListener('click', () => {
+          const isExpanded = arrow.getAttribute('aria-expanded') === 'true';
+          const subList = arrow.parentElement.querySelector('.sub-list');
 
-    if (!isClickInsidePanel && !isClickOnNavButton) {
-      headerPanelContainer.hidden = true;
-      headerPanelContent.innerHTML = '';
-      document.querySelectorAll('.header-toggle').forEach(btn => {
-        btn.classList.remove("active");
-        btn.setAttribute("aria-expanded", "false");
+          arrow.setAttribute('aria-expanded', String(!isExpanded));
+          if (subList) {
+            subList.hidden = !subList.hidden;
+        }
+
       });
-      activeButton = null;
-    }
-  });
-
-    // Rowdown arrow navigation when clic
-    document.querySelectorAll('.toggle-arrow').forEach(arrow => {
-    arrow.addEventListener('click', () => {
-      const isExpanded = arrow.getAttribute('aria-expanded') === 'true';
-      const subList = arrow.parentElement.querySelector('.sub-list');
-
-      arrow.setAttribute('aria-expanded', String(!isExpanded));
-      if (subList) {
-        subList.hidden = !subList.hidden;
-     }
-
     });
-  });
 
       // Rowdown section navigation when clic
     document.querySelectorAll('.tree-toggle').forEach(toggle => {
@@ -105,108 +105,122 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 🍔 Toggle dropdown menu from hamburger button
-  const navToggle = document.querySelector('.nav-toggle');
-  const modalMenu = document.getElementById('modal-content-menu');
+      // 🍔 Toggle dropdown menu from hamburger button
+      const navToggle = document.querySelector('.nav-toggle');
+      const modalMenu = document.getElementById('modal-content-menu');
 
-  if (navToggle && modalMenu) {
-    navToggle.addEventListener('click', () => {
-      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+    if (navToggle && modalMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
 
-      navToggle.setAttribute('aria-expanded', String(!isExpanded));
-      modalMenu.hidden = isExpanded;
+        navToggle.setAttribute('aria-expanded', String(!isExpanded));
+        modalMenu.hidden = isExpanded;
 
-      // 🧩 Clone nav-tree only when opening the modal
-      if (!isExpanded) {
-        cloneNavTreeIntoModal();
+        // 🧩 Clone nav-tree only when opening the modal
+        if (!isExpanded) {
+          cloneNavTreeIntoModal();
+        }
+    });
+    } else {
+      console.warn("⚠️ nav-toggle or modal-content-menu not found.");
+    }
+
+    // 🧼 Close modal when clicking outside
+    document.addEventListener('click', (event) => {
+      const isClickInsideMenu = modalMenu.contains(event.target);
+      const isClickOnToggle = navToggle.contains(event.target);
+
+      if (!isClickInsideMenu && !isClickOnToggle) {
+        modalMenu.hidden = true;
+        navToggle.setAttribute('aria-expanded', 'false');
       }
-  });
-  } else {
-    console.warn("⚠️ nav-toggle or modal-content-menu not found.");
-  }
+    });
 
-  // 🧼 Close modal when clicking outside
-  document.addEventListener('click', (event) => {
-    const isClickInsideMenu = modalMenu.contains(event.target);
-    const isClickOnToggle = navToggle.contains(event.target);
+    // 🧠 Clone nav-tree into modal content
+    function cloneNavTreeIntoModal() {
+      const navTree = document.querySelector('.nav-tree');
+      const modalContent = document.querySelector('#modal-content-menu .modal-content');
 
-    if (!isClickInsideMenu && !isClickOnToggle) {
-      modalMenu.hidden = true;
-      navToggle.setAttribute('aria-expanded', 'false');
-    }
-  });
+      if (!navTree || !modalContent) return;
 
-  // 🧠 Clone nav-tree into modal content
-  function cloneNavTreeIntoModal() {
-    const navTree = document.querySelector('.nav-tree');
-    const modalContent = document.querySelector('#modal-content-menu .modal-content');
+      // Remove previous clone if exists
+      const previousClone = modalContent.querySelector('.cloned-nav-tree');
+      if (previousClone) {
+        modalContent.removeChild(previousClone);
+      }
 
-    if (!navTree || !modalContent) return;
+      // Clone and append
+      const clone = navTree.cloneNode(true);
+      clone.classList.add('cloned-nav-tree');
+      modalContent.appendChild(clone);
 
-    // Remove previous clone if exists
-    const previousClone = modalContent.querySelector('.cloned-nav-tree');
-    if (previousClone) {
-      modalContent.removeChild(previousClone);
+      // 🔄 Reactivate tree-toggle buttons inside the clone
+      activateTreeToggles(clone);
     }
 
-    // Clone and append
-    const clone = navTree.cloneNode(true);
-    clone.classList.add('cloned-nav-tree');
-    modalContent.appendChild(clone);
+    // 🌿 Activate tree-toggle buttons to show/hide sub-lists
+    function activateTreeToggles(container) {
+      const toggles = container.querySelectorAll('.tree-toggle');
 
-    // 🔄 Reactivate tree-toggle buttons inside the clone
-    activateTreeToggles(clone);
-  }
+      toggles.forEach(toggle => {
+        const subList = toggle.nextElementSibling;
 
-  // 🌿 Activate tree-toggle buttons to show/hide sub-lists
-  function activateTreeToggles(container) {
-    const toggles = container.querySelectorAll('.tree-toggle');
+        if (!subList || !subList.classList.contains('sub-list')) return;
 
-    toggles.forEach(toggle => {
-      const subList = toggle.nextElementSibling;
+        toggle.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!isExpanded));
+          subList.hidden = isExpanded;
+        });
+      });
+    }
 
-      if (!subList || !subList.classList.contains('sub-list')) return;
+    document.addEventListener("DOMContentLoaded", () => {
+     console.log("✅ DOM completamente cargado");
 
-      toggle.addEventListener('click', () => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!isExpanded));
-        subList.hidden = isExpanded;
+      const markdown = document.getElementById("markdown-container");
+      console.log("📦 markdown-container:", markdown);
+
+      const headings = document.querySelectorAll("#markdown-container h2[id]");
+      console.log("🔍 Encabezados encontrados:", headings.length);
+
+      const navLinks = document.querySelectorAll(".article-nav-list a");
+      console.log("🔗 Enlaces en lista lateral:", navLinks.length);
+
+      document.addEventListener("DOMContentLoaded", () => {
+      const headings = document.querySelectorAll("#markdown-container h2[id]");
+      const navLinks = document.querySelectorAll(".article-nav-list a");
+
+      if (headings.length === 0 || navLinks.length === 0) {
+        console.warn("No se encontraron encabezados o enlaces para observar.");
+        return;
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute("id");
+          const link = document.querySelector(`.article-nav-list a[href="#${id}"]`);
+
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove("active"));
+          if (link) {
+            link.classList.add("active");
+            console.log(`Activado: ${id}`);
+          }
+        }
+      });
+      }, {
+        rootMargin: "0px 0px -30% 0px",
+        threshold: 0.1
+      });
+
+      headings.forEach(h => {
+      console.log("Observando:", h.tagName, h.id);
+      observer.observe(h);
+
       });
     });
-  }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const headings = document.querySelectorAll("#markdown-container h2[id]");
-    const navLinks = document.querySelectorAll(".article-nav-list a");
-
-    if (headings.length === 0 || navLinks.length === 0) {
-      console.warn("No se encontraron encabezados o enlaces para observar.");
-      return;
-    }
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const id = entry.target.getAttribute("id");
-        const link = document.querySelector(`.article-nav-list a[href="#${id}"]`);
-
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove("active"));
-        if (link) {
-          link.classList.add("active");
-          console.log(`Activado: ${id}`);
-        }
-      }
-    });
-    }, {
-      rootMargin: "0px 0px -30% 0px",
-      threshold: 0.1
-    });
-
-    headings.forEach(h => {
-    console.log("Observando:", h.tagName, h.id);
-    observer.observe(h);
-
-    });
   });
-  
+
 })
