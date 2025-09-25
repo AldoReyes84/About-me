@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const headings = document.querySelectorAll("#markdown-container h2[id]");
   const navLinks = document.querySelectorAll(".article-nav-list a");
 
-  console.log("📦 markdown-container:", markdown);
-  console.log("🔍 Encabezados encontrados:", headings.length);
-  console.log("🔗 Enlaces en lista lateral:", navLinks.length);
+  //console.log("📦 markdown-container:", markdown);
+  //console.log("🔍 Encabezados encontrados:", headings.length);
+  //console.log("🔗 Enlaces en lista lateral:", navLinks.length);
 
   if (!headerPanelContainer || !headerPanelContent || !templates) {
     console.error("❌ Required elements not found.");
