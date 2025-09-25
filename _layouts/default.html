@@ -706,11 +706,12 @@
                     <ul class="article-nav-list">
                         {% assign headers = content | split: '<h2' %}
                         {% for h in headers offset:1 %}
-                        {% assign text = h | split: '</h2>' | first | remove: '>' %}
+                        {% assign raw = h | split: '</h2>' | first %}
+                        {% assign text = raw | remove: '>' | strip_html %}
                         {% assign id = text | slugify %}
                         <li><a href="#{{ id }}">{{ text }}</a></li>
-                    {% endfor %}
-                </ul>
+                        {% endfor %}
+                    </ul>
             </aside>
         </div>
   
