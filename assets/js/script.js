@@ -199,8 +199,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     }, {
       rootMargin: "0px 0px -70% 0px",
-      threshold: 0.25
+      threshold: 0.1
     });
+
+    console.log("Observando:", h.tagName, h.id);
 
     headings.forEach(h => observer.observe(h));
   });

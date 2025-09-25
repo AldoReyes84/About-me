@@ -1,3 +1,7 @@
+#markdown-container {
+  min-height: 2000px;
+}
+
 em {
   font-style: italic;
   color: #267CB9;
@@ -535,6 +539,7 @@ aside {
   font-weight: bold;
   color: #0078d4;
   border-left: 3px solid #0078d4;
+  background-color: red !important;
 }
 
 footer {
