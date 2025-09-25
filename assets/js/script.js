@@ -198,14 +198,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
     }, {
-      rootMargin: "0px 0px -70% 0px",
+      rootMargin: "0px 0px -30% 0px",
       threshold: 0.1
     });
 
+    headings.forEach(h => {
     console.log("Observando:", h.tagName, h.id);
+    observer.observe(h);
 
-    headings.forEach(h => observer.observe(h));
+    });
   });
-
-
-});
+  
+})
