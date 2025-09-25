@@ -176,35 +176,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
     const headings = document.querySelectorAll("#markdown-container h2[id]");
-    console.log("Encabezados encontrados:", headings.length);
+    const navLinks = document.querySelectorAll(".article-nav-list a");
 
+    if (headings.length === 0 || navLinks.length === 0) {
+      console.warn("No se encontraron encabezados o enlaces para observar.");
+      return;
+    }
 
-    // IntersectionObserve for Aside article nav list
-    document.addEventListener("DOMContentLoaded", () => {
-      const headings = document.querySelectorAll("#markdown-container h2[id]");
-      const navLinks = document.querySelectorAll(".article-nav-list a");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute("id");
+        const link = document.querySelector(`.article-nav-list a[href="#${id}"]`);
 
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          const id = entry.target.getAttribute("id");
-          const link = document.querySelector(`.article-nav-list a[href="#${id}"]`);
-
-          if (entry.isIntersecting) {
-           navLinks.forEach(l => l.classList.remove("active"));
-            if (link) link.classList.add("active");
-          }
-        });
-      }, {
-         rootMargin: "-50% 0px -50% 0px",
-         threshold: 0.1
-      });
-
-      headings.forEach(h => observer.observe(h));
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove("active"));
+        if (link) {
+          link.classList.add("active");
+          console.log(`Activado: ${id}`);
+        }
+      }
+    });
+    }, {
+      rootMargin: "0px 0px -70% 0px",
+      threshold: 0.25
     });
 
-    }, 100); // espera 100ms
+    headings.forEach(h => observer.observe(h));
   });
 
 
