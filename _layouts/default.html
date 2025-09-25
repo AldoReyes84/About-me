@@ -703,16 +703,17 @@
             <!-- Aside -->
             <aside class="article-nav">
                 <h2>In this article</h2>
-                    <ul class="article-nav-list">
-                        {% assign headers = content | split: '<h2' %}
-                        {% for h in headers offset:1 %}
-                        {% assign raw = h | split: '</h2>' | first %}
-                        {% assign cleaned = raw | replace: 'id="', '' | replace: '"', '' %}
-                        {% assign text = cleaned | remove: '>' | strip_html %}
-                        {% assign id = text | slugify %}
-                        <li><a href="#{{ id }}">{{ text }}</a></li>
-                        {% endfor %}
-                    </ul>
+                <ul class="article-nav-list">
+                    {% assign headers = content | split: '<h2' %}
+                    {% for h in headers offset:1 %}
+                    {% assign raw = h | split: '</h2>' | first %}                        {% assign without_id = raw | remove: 'id="' %}
+                    {% assign without_quotes = without_id | remove: '"' %}
+                    {% assign without_gt = without_quotes | remove: '>' %}
+                    {% assign text = without_gt | strip_html %}
+                    {% assign id = text | slugify %}
+                    <li><a href="#{{ id }}">{{ text }}</a></li>
+                    {% endfor %}
+                </ul>
             </aside>
         </div>
   
