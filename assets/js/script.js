@@ -175,27 +175,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // IntersectionObserve for Aside article nav list
   document.addEventListener("DOMContentLoaded", () => {
-  const headings = document.querySelectorAll("#markdown-container h2[id]");
-  const navLinks = document.querySelectorAll(".article-nav-list a");
+  setTimeout(() => {
+    const headings = document.querySelectorAll("#markdown-container h2[id]");
+    console.log("Encabezados encontrados:", headings.length);
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const id = entry.target.getAttribute("id");
-      const link = document.querySelector(`.article-nav-list a[href="#${id}"]`);
 
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove("active"));
-        if (link) link.classList.add("active");
-      }
+    // IntersectionObserve for Aside article nav list
+    document.addEventListener("DOMContentLoaded", () => {
+      const headings = document.querySelectorAll("#markdown-container h2[id]");
+      const navLinks = document.querySelectorAll(".article-nav-list a");
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute("id");
+          const link = document.querySelector(`.article-nav-list a[href="#${id}"]`);
+
+          if (entry.isIntersecting) {
+           navLinks.forEach(l => l.classList.remove("active"));
+            if (link) link.classList.add("active");
+          }
+        });
+      }, {
+         rootMargin: "-50% 0px -50% 0px",
+         threshold: 0.1
+      });
+
+      headings.forEach(h => observer.observe(h));
     });
-  }, {
-    rootMargin: "-50% 0px -50% 0px",
-    threshold: 0.1
-  });
 
-  headings.forEach(h => observer.observe(h));
+    }, 100); // espera 100ms
   });
 
 
