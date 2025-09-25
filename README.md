@@ -1,6 +1,6 @@
-# About Me {about-me}
+# About Me {#about-me}
 
-## How I Work {how-i-work}
+## How I Work {#how-i-work}
 
 My approach to business intelligence is rooted in the belief that any data can be transformed into valuable insights, as long as it meets basic quality standards, as long as we have access to the right elements, the data structure remains consistent, regardless of the source, platform, or tool, while there are many methods to aggregate and present data, these can be researched, learned, and applied effectively.
 
@@ -10,7 +10,7 @@ When visualizing data, I aim to create clear, easy-to-read dashboards using best
 
 I truly enjoy working in teams, sharing knowledge, and learning from others.
 
-## General Info {general-info}
+## General Info {#general-info}
 
 My name is Aldo Reyes. I'm 41 years old and currently living in Mexico City.
 
@@ -27,12 +27,12 @@ I can hyperfocus on topics that interest me and tackle complex challenges with r
 
 However, I sometimes struggle with structure and long-term commitment. For me to perform at my best, I need to be truly engaged in a project—it has to make sense and resonate with me.
 
-## My Personality {my-personality}
+## My Personality {#my-personality}
 
 I consider myself a calm and thoughtful person who stands firmly by my values and convictions.
 I’m also highly adaptable and capable of aligning with corporate goals to contribute meaningfully to any team.
 
 I deeply value friendships, colleagues, and family. While I enjoy meaningful connections, I prefer quiet environments—staying at home or meeting in peaceful places rather than attending loud parties.
 
-## What I Love {what-i-love}
+## What I Love {#what-i-love}
 I love learning. I'm constantly exploring tutorials—whether it's mastering a guitar song, picking up a new instrument, cooking a new dish, or improving my technical skills.
