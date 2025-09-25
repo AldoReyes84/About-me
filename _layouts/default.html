@@ -701,8 +701,16 @@
              </div>
             </main>
             <!-- Aside -->
-            <aside>
-                
+            <aside class="article-nav">
+                <h2>In this article</h2>
+                    <ul class="article-nav-list">
+                        {% assign headers = content | split: '<h2' %}
+                        {% for h in headers offset:1 %}
+                        {% assign text = h | split: '</h2>' | first | remove: '>' %}
+                        {% assign id = text | slugify %}
+                        <li><a href="#{{ id }}">{{ text }}</a></li>
+                    {% endfor %}
+                </ul>
             </aside>
         </div>
   
