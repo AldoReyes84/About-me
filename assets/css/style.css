@@ -517,12 +517,12 @@ aside {
   height: fit-content;
 }
 
-.article-nav-list {
-  margin: 1.5em;
+.article-nav-list li {
+  margin: 0.5em;
 }
 
 .article-nav-list a {
-  color: #0078d4;
+  color: gray;
   background-color: #eef6ff;
   margin-bottom: 0.5em;
 }
