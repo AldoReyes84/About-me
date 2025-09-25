@@ -513,6 +513,7 @@ aside {
   padding: 1rem;
   position: sticky;
   top: 0;
+  align-self: start;
   height: fit-content;
 }
 
