@@ -10,7 +10,7 @@ When visualizing data, I aim to create clear, easy-to-read dashboards using best
 
 I truly enjoy working in teams, sharing knowledge, and learning from others.
 
-## General Info {#general-info}
+## General Info
 
 My name is Aldo Reyes. I'm 41 years old and currently living in Mexico City.
 
