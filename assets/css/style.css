@@ -1,5 +1,8 @@
-#markdown-container {
-  min-height: 2000px;
+#about-me-link {
+  all: unset;
+  display: inherit;
+  font: inherit;
+  color: inherit;
 }
 
 em {
